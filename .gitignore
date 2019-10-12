@@ -65,5 +65,3 @@ typings/
 # next.js build output
 .next
 
-# Built files
-lib
