@@ -1,32 +1,33 @@
 {
-  "name": "javascript-action",
+  "name": "issue-action",
   "version": "1.0.0",
-  "description": "JavaScript Action Template",
-  "main": "index.js",
-  "scripts": {
-    "lint": "eslint index.js",
-    "test": "eslint index.js && jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/actions/javascript-action.git"
-  },
+  "description": "Github action for github issues",
   "keywords": [
-    "GitHub",
     "Actions",
+    "GitHub",
     "JavaScript"
   ],
-  "author": "GitHub",
-  "license": "MIT",
+  "homepage": "https://github.com/Naturalclar/issue-action#readme",
   "bugs": {
-    "url": "https://github.com/actions/javascript-action/issues"
+    "url": "https://github.com/Naturalclar/issue-action/issues"
   },
-  "homepage": "https://github.com/actions/javascript-action#readme",
+  "repository": "https://github.com/Naturalclar/issue-action.git",
+  "license": "MIT",
+  "author": "Jesse Katsumata <jesse.katsumata@gmail.com>",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
   "dependencies": {
-    "@actions/core": "^1.1.1"
+    "@actions/core": "^1.1.1",
+    "@actions/github": "^1.1.0"
   },
   "devDependencies": {
-    "eslint": "^6.3.0",
-    "jest": "^24.9.0"
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.12",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.4"
   }
 }
