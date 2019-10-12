@@ -1,13 +1,21 @@
-name: "Wait"
-description: "Wait a designated number of milliseconds"
+name: "IssueTrigger"
+description: "trigger an action based on issue comment"
 inputs:
-  milliseconds: # id of input
-    description: "number of milliseconds to wait"
+  github-token:
+    description: "Github token"
     required: true
-    default: "1000"
+  keywords:
+    description: "keywords to look for in the issue"
+    required: true
+  action:
+    description: "action to be taken when keyword is found"
+    required: true
+
 outputs:
-  time: # output will be available to future steps
-    description: "The message to output"
+  title:
+    description: "Title of Issue"
+  body:
+    description: "Body of Issue"
 runs:
   using: "node12"
   main: "lib/index.js"

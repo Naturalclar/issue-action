@@ -1,16 +1,18 @@
 import * as core from "@actions/core";
-import { wait } from "./wait";
+import { getComment } from "./getComment";
 
 async function run() {
   try {
-    const ms = core.getInput("milliseconds");
-    console.log(`Waiting ${ms} milliseconds ...`);
-
-    core.debug(new Date().toTimeString());
-    await wait(parseInt(ms, 10));
-    core.debug(new Date().toTimeString());
-
-    core.setOutput("time", new Date().toTimeString());
+    const keyword = core.getInput("keyword");
+    console.log(`keyword: ${keyword}`);
+    const action = core.getInput("action");
+    console.log(`action: ${action}`);
+    const token = core.getInput("github-token");
+    const comment = await getComment(token);
+    if (comment) {
+      core.setOutput("title", comment.title);
+      core.setOutput("body", comment.body);
+    }
   } catch (error) {
     core.setFailed(error.message);
   }
