@@ -20,7 +20,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: @naturalclar/issue-action
+      - uses: naturalclar/issue-action
         with:
           keywords: "test"
           action: "assign username"
@@ -41,7 +41,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: @naturalclar/issue-action
+      - uses: naturalclar/issue-action
         with:
           keywords: "help wanted"
           action: "label HELP"
