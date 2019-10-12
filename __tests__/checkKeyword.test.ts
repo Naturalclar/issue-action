@@ -13,6 +13,14 @@ describe("checkKeyword", () => {
     const result = checkKeyword(["test", "bar"], { title: "bar", body: "" });
     expect(result).toBe(true);
   });
+  it("returns true for different casings in keyword", () => {
+    const result = checkKeyword(["test", "Bar"], { title: "bar", body: "" });
+    expect(result).toBe(true);
+  });
+  it("returns true for different casings in content", () => {
+    const result = checkKeyword(["test", "bar"], { title: "Bar", body: "" });
+    expect(result).toBe(true);
+  });
 
   it("returns false if keyword is not included in title or body", () => {
     const result = checkKeyword(["test"], { title: "", body: "" });

@@ -3,9 +3,9 @@ export const checkKeyword = (
   content: { title: string; body: string }
 ): boolean => {
   return keywords.some(keyword => {
-    if (content.title.includes(keyword)) {
+    if (content.title.toLowerCase().includes(keyword.toLowerCase())) {
       return true;
     }
-    return content.body.includes(keyword);
+    return content.body.toLowerCase().includes(keyword.toLowerCase());
   });
 };
