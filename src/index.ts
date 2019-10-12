@@ -9,7 +9,7 @@ async function run() {
     const keywords = keyword.split(" ");
     console.log(`keywords: ${keywords}`);
     const action = core.getInput("action");
-    const actionArgs = keyword.split(" ");
+    const actionArgs = action.split(" ");
     console.log(`action: ${action.split(" ")}`);
     const token = core.getInput("github-token");
     const content = await getIssueContent(token);
