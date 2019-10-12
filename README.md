@@ -5,6 +5,8 @@
 
 # Create a JavaScript Action
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Naturalclar/issue-action.svg?token=501ef3929010c68d54d3c5dab7ce79877a5efac1d0b932f692a143069c829039&ts=1570890558522)](https://greenkeeper.io/)
+
 Use this template to bootstrap the creation of a JavaScript action.:rocket:
 
 This template includes tests, linting, a validation workflow, publishing, and versioning guidance.  
