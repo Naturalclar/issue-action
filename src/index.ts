@@ -1,14 +1,15 @@
 import * as core from "@actions/core";
 import { getIssueContent } from "./getIssueContent";
 import { checkKeyword } from "./checkKeyword";
+import { setIssueLabel } from "./setIssueLabel";
 
 async function run() {
   try {
-    const keyword = core.getInput("keyword");
+    const keyword = core.getInput("keywords");
     const keywords = keyword.split(" ");
-    console.log(`keyword: ${keywords}`);
+    console.log(`keywords: ${keywords}`);
     const action = core.getInput("action");
-    const actions = keyword.split(" ");
+    const actionArgs = keyword.split(" ");
     console.log(`action: ${action.split(" ")}`);
     const token = core.getInput("github-token");
     const content = await getIssueContent(token);
@@ -19,9 +20,9 @@ async function run() {
       return;
     }
 
-    switch (actions[0]) {
+    switch (actionArgs[0]) {
       case "label":
-        console.log("label");
+        setIssueLabel(token, actionArgs.slice(1));
       case "assign":
         console.log("assign");
       case "close":
@@ -29,7 +30,7 @@ async function run() {
       case "comment":
         console.log("comment");
       default:
-        core.setFailed(`Invalid action: ${actions[0]}`);
+        core.setFailed(`Invalid action: ${actionArgs[0]}`);
         return;
     }
   } catch (error) {

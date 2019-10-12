@@ -14,5 +14,5 @@ jobs:
       - uses: ./
         with:
           keywords: "foo bar"
-          actions: "label Test"
+          action: "label Test"
           github-token: "${{ secrets.GITHUB_TOKEN }}"
