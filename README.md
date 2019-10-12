@@ -20,7 +20,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: naturalclar/issue-action
+      - uses: naturalclar/issue-actionv0.0.3
         with:
           keywords: "test"
           action: "assign username"
@@ -41,9 +41,34 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: naturalclar/issue-action
+      - uses: naturalclar/issue-actionv0.0.3
         with:
           keywords: "help wanted"
           action: "label HELP"
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+```
+
+# Upgrading this package
+
+When uploading github actions, `node_modules` and `lib` directories need to be commited.
+
+Follow the steps below:
+
+```sh
+# create a new release branch
+$ git checkout -b release/vX.X.X
+```
+
+Commentout the following lines in `.gitignore`
+
+```
+# comment this out distribution branches
+node_modules/
+lib
+```
+
+```
+$ git add node_modules lib
+$ git commit -a -m "release"
+$ git push origin release/vX.X.X
 ```
