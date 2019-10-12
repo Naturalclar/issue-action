@@ -1,7 +1,5 @@
-name: "test-local"
-on:
-  issues:
-    types: [opened]
+name: "General Test"
+on: [push, pull_request]
 
 jobs:
   test:
@@ -11,8 +9,3 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run test
-      - uses: ./
-        with:
-          keywords: "foo bar"
-          action: "label Test"
-          github-token: "${{ secrets.GITHUB_TOKEN }}"

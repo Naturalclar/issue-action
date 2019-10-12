@@ -2,6 +2,7 @@ import * as core from "@actions/core";
 import { getIssueContent } from "./getIssueContent";
 import { checkKeyword } from "./checkKeyword";
 import { setIssueLabel } from "./setIssueLabel";
+import { setIssueAssignee } from "./setIssueAssignee";
 
 async function run() {
   try {
@@ -24,11 +25,7 @@ async function run() {
       case "label":
         setIssueLabel(token, actionArgs.slice(1));
       case "assign":
-        console.log("assign");
-      case "close":
-        console.log("close");
-      case "comment":
-        console.log("comment");
+        setIssueAssignee(token, actionArgs.slice(1));
       default:
         core.setFailed(`Invalid action: ${actionArgs[0]}`);
         return;
