@@ -8,8 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-
-      - run: npm run build
+      - run: npm install -g yarn
+      - run: yarn
+      - run: yarn build
       - uses: ./
         with:
           keywords: test
