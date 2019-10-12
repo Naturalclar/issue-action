@@ -24,11 +24,12 @@ async function run() {
     switch (actionArgs[0]) {
       case "label":
         setIssueLabel(token, actionArgs.slice(1));
+        break;
       case "assign":
         setIssueAssignee(token, actionArgs.slice(1));
+        break;
       default:
         core.setFailed(`Invalid action: ${actionArgs[0]}`);
-        return;
     }
   } catch (error) {
     core.setFailed(error.message);
