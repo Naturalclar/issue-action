@@ -1,4 +1,4 @@
-[![TestBuild](https://github.com/Naturalclar/issue-action/workflows/test/badge.svg)](https://github.com/Naturalclar/issue-action) [![Assign](https://github.com/Naturalclar/issue-action/workflows/assign/badge.svg)](https://github.com/Naturalclar/issue-action) [![Label](https://github.com/Naturalclar/issue-action/workflows/label/badge.svg)](https://github.com/Naturalclar/issue-action)
+[![TestBuild][generaltest]](https://github.com/Naturalclar/issue-action) [![Assign][assigntest]](https://github.com/Naturalclar/issue-action) [![Label][labeltest]](https://github.com/Naturalclar/issue-action)
 
 # Issue Action
 
@@ -72,3 +72,7 @@ $ git add node_modules lib
 $ git commit -a -m "release"
 $ git push origin release/vX.X.X
 ```
+
+[generaltest]: https://github.com/Naturalclar/issue-action/workflows/General%20Test/badge.svg
+[assigntest]: https://github.com/Naturalclar/issue-action/workflows/Test%20Issue%20Assign/badge.svg
+[labeltest]: https://github.com/Naturalclar/issue-action/workflows/Test%20Issue%20Label/badge.svg
