@@ -1,4 +1,4 @@
-name: "IssueTrigger"
+name: "Issue Bot"
 description: "trigger an action based on issue comment"
 inputs:
   github-token:
@@ -19,3 +19,6 @@ outputs:
 runs:
   using: "node12"
   main: "lib/index.js"
+branding:
+  icon: alert-circle
+  color: gray-dark
