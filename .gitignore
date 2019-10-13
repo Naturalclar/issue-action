@@ -1,6 +1,6 @@
 # comment this out distribution branches
-node_modules/
-lib
+# node_modules/
+# lib
 
 # Editors
 .vscode
