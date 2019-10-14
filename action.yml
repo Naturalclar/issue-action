@@ -7,9 +7,10 @@ inputs:
   keywords:
     description: "keywords to look for in the issue"
     required: true
-  action:
-    description: "action to be taken when keyword is found"
-    required: true
+  assignees:
+    description: "assignees to be assigned when keyword is found"
+  labels:
+    description: "labels to be set when keyword is found"
 
 outputs:
   title:
