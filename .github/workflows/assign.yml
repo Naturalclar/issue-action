@@ -12,6 +12,6 @@ jobs:
       - run: npm run build
       - uses: ./
         with:
-          keywords: "assign test"
-          action: "assign Naturalclar"
+          keywords: '["assign","test"]'
+          assignees: '["Naturalclar"]'
           github-token: "${{ secrets.GITHUB_TOKEN }}"

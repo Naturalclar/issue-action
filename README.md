@@ -20,16 +20,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: naturalclar/issue-actionv0.0.3
+      - uses: Naturalclar/issue-action@v1.0.0
         with:
-          keywords: "test"
-          action: "assign username"
+          keywords: '["test"]'
+          action: '["username"]'
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 ```
 
 ### Label
 
-Automatically set `HELP` label when Issue title or body contains `help` or `wanted`
+Automatically set `help wanted` label when Issue title or body contains `help` or `wanted`
 
 ```yaml
 name: "Set Issue Label"
@@ -41,10 +41,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: naturalclar/issue-actionv0.0.3
+      - uses: Naturalclar/issue-action@v1.0.0
         with:
-          keywords: "help wanted"
-          action: "label HELP"
+          keywords: '["help", "wanted"]'
+          labels: '["help wanted"]'
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 ```
 

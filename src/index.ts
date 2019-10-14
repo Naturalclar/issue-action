@@ -6,12 +6,12 @@ import { setIssueAssignee } from "./setIssueAssignee";
 
 async function run() {
   try {
-    const keyword = core.getInput("keywords");
-    const keywords = keyword.split(" ");
+    const keywords: string[] = JSON.parse(
+      core.getInput("keywords", { required: true })
+    );
+
     console.log(`keywords: ${keywords}`);
-    const action = core.getInput("action");
-    const actionArgs = action.split(" ");
-    console.log(`action: ${action.split(" ")}`);
+
     const token = core.getInput("github-token");
     const content = await getIssueContent(token);
 
@@ -21,15 +21,24 @@ async function run() {
       return;
     }
 
-    switch (actionArgs[0]) {
-      case "label":
-        setIssueLabel(token, actionArgs.slice(1));
-        break;
-      case "assign":
-        setIssueAssignee(token, actionArgs.slice(1));
-        break;
-      default:
-        core.setFailed(`Invalid action: ${actionArgs[0]}`);
+    const labelsInput: string = core.getInput("labels");
+    const assigneesInput: string = core.getInput("assignees");
+    if (!labelsInput && !assigneesInput) {
+      core.setFailed(
+        "labels or assignees input not found. Make sure your `.yml` file contains `labels` or `assignees`"
+      );
+    }
+
+    if (labelsInput) {
+      const labels: string[] = JSON.parse(labelsInput);
+      console.log(labels);
+      setIssueLabel(token, labels);
+    }
+
+    if (assigneesInput) {
+      const assignees: string[] = JSON.parse(assigneesInput);
+      console.log(assignees);
+      setIssueAssignee(token, assignees);
     }
   } catch (error) {
     core.setFailed(error.message);
