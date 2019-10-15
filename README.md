@@ -8,7 +8,7 @@ Github action for automatically adding label or setting assignee when a new Issu
 
 ### Assignee
 
-Automatically assign `@username` when Issue title or body contains "test"
+Automatically assign `@username` when Issue title or body contains `test`
 
 ```yaml
 name: "Set Assignee"
@@ -23,7 +23,7 @@ jobs:
       - uses: Naturalclar/issue-action@v1.0.0
         with:
           keywords: '["test"]'
-          action: '["username"]'
+          assignees: '["username"]'
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 ```
 
