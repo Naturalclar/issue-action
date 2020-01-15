@@ -6,6 +6,8 @@ import { setIssueAssignee } from "./setIssueAssignee";
 
 async function run() {
   try {
+    core.setOutput("labeled", false.toString());
+    core.setOutput("assigned", false.toString());
     const keywords: string[] = JSON.parse(
       core.getInput("keywords", { required: true })
     );
@@ -33,12 +35,14 @@ async function run() {
       const labels: string[] = JSON.parse(labelsInput);
       console.log(labels);
       setIssueLabel(token, labels);
+      core.setOutput("labeled", true.toString())
     }
 
     if (assigneesInput) {
       const assignees: string[] = JSON.parse(assigneesInput);
       console.log(assignees);
       setIssueAssignee(token, assignees);
+      core.setOutput("assigned", true.toString())
     }
   } catch (error) {
     core.setFailed(error.message);
