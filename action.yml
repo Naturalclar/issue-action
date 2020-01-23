@@ -17,6 +17,10 @@ outputs:
     description: "Title of Issue"
   body:
     description: "Body of Issue"
+  labeled:
+    description: "\"true\" if labeled otherwise \"false\""
+  assigned:
+    description: "\"true\" if assigned otherwise \"false\""
 runs:
   using: "node12"
   main: "lib/index.js"
