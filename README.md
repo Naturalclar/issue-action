@@ -24,6 +24,7 @@ jobs:
         with:
           keywords: '["test"]'
           assignees: '["username"]'
+          # GITHUB_TOKEN secret value is a personal access token with repo and workflow scopes
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 ```
 
@@ -45,6 +46,7 @@ jobs:
         with:
           keywords: '["help", "wanted"]'
           labels: '["help wanted"]'
+          # GITHUB_TOKEN secret value is a personal access token with repo and workflow scopes
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 ```
 
