@@ -20,7 +20,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@actions/core": "^1.1.1",
+    "@actions/core": "^1.2.3",
     "@actions/github": "^1.1.0"
   },
   "devDependencies": {
