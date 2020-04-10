@@ -14,6 +14,6 @@ export const getIssueContent = async (token: string) => {
     ...getRepo(),
     issue_number
   });
-  const { title, body } = data;
-  return { title, body };
+  const { title } = data;
+  return { title };
 };

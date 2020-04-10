@@ -8,7 +8,7 @@ Github action for automatically adding label or setting assignee when a new Issu
 
 ### Assignee
 
-Automatically assign `@username` when Issue title or body contains `test`
+Automatically assign `@username` when Issue title contains `test`
 
 ```yaml
 name: "Set Assignee"
@@ -29,7 +29,7 @@ jobs:
 
 ### Label
 
-Automatically set `help wanted` label when Issue title or body contains `help` or `wanted`
+Automatically set `help wanted` label when Issue title contains `help` or `wanted`
 
 ```yaml
 name: "Set Issue Label"
