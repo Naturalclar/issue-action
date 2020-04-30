@@ -14,7 +14,7 @@ describe("checkKeyword", () => {
     expect(result).toBe(true);
   });
 
-  it("returns false if keyword is not included in title, () => {
+  it("returns false if keyword is not included in title", () => {
     const result = checkKeyword(["test"], { title: "" });
     expect(result).toBe(false);
   });
