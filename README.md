@@ -24,6 +24,7 @@ jobs:
         with:
           keywords: '["test"]'
           assignees: '["username"]'
+          title-or-body: 'both'
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 ```
 
@@ -45,8 +46,13 @@ jobs:
         with:
           keywords: '["help", "wanted"]'
           labels: '["help wanted"]'
+          title-or-body: 'both'
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 ```
+
+#### Title or Body
+
+Choose whether you want to check for a keyword match in the issue `title`, the issue `body`, or `both`.
 
 # Upgrading this package
 

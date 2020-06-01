@@ -1,29 +1,21 @@
 import { checkKeyword } from "../src/checkKeyword";
 
 describe("checkKeyword", () => {
-  it("returns true if keyword is included in the title", () => {
-    const result = checkKeyword(["test"], { title: "test", body: "" });
-    expect(result).toBe(true);
-  });
-  it("returns true if keyword is included in the body", () => {
-    const result = checkKeyword(["test"], { title: "", body: "test" });
-    expect(result).toBe(true);
-  });
-  it("returns true if second keyword is included in title or body", () => {
-    const result = checkKeyword(["test", "bar"], { title: "bar", body: "" });
+  it("returns true if keyword is included in the issue content", () => {
+    const result = checkKeyword(["test"], "test");
     expect(result).toBe(true);
   });
   it("returns true for different casings in keyword", () => {
-    const result = checkKeyword(["test", "Bar"], { title: "bar", body: "" });
+    const result = checkKeyword(["test", "Bar"], "bar");
     expect(result).toBe(true);
   });
   it("returns true for different casings in content", () => {
-    const result = checkKeyword(["test", "bar"], { title: "Bar", body: "" });
+    const result = checkKeyword(["test", "bar"], "Bar");
     expect(result).toBe(true);
   });
 
   it("returns false if keyword is not included in title or body", () => {
-    const result = checkKeyword(["test"], { title: "", body: "" });
+    const result = checkKeyword(["test"], "");
     expect(result).toBe(false);
   });
 });

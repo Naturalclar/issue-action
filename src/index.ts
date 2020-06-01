@@ -8,6 +8,7 @@ async function run() {
   try {
     core.setOutput("labeled", false.toString());
     core.setOutput("assigned", false.toString());
+    const titleOrBody: string = core.getInput("title-or-body");
     const keywords: string[] = JSON.parse(
       core.getInput("keywords", { required: true })
     );
@@ -15,7 +16,7 @@ async function run() {
     console.log(`keywords: ${keywords}`);
 
     const token = core.getInput("github-token");
-    const content = await getIssueContent(token);
+    const content = await getIssueContent(token, titleOrBody);
 
     const hasKeyword = checkKeyword(keywords, content);
     if (!hasKeyword) {
