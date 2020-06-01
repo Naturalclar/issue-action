@@ -11,6 +11,10 @@ inputs:
     description: "assignees to be assigned when keyword is found"
   labels:
     description: "labels to be set when keyword is found"
+  title-or-body:
+    description: "Whether to check the issue title, the issue body, or both for matching keywords"
+    required: false
+    default: "both"
 
 outputs:
   title:

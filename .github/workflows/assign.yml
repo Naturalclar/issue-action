@@ -14,4 +14,5 @@ jobs:
         with:
           keywords: '["assign","test"]'
           assignees: '["Naturalclar"]'
+          title-or-body: 'both'
           github-token: "${{ secrets.GITHUB_TOKEN }}"

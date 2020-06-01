@@ -1,11 +1,10 @@
 export const checkKeyword = (
   keywords: string[],
-  content: { title: string; body: string }
+  content: string
 ): boolean => {
   return keywords.some(keyword => {
-    if (content.title.toLowerCase().includes(keyword.toLowerCase())) {
-      return true;
+    if (content.toLowerCase().includes(keyword.toLowerCase())) {
+      return content.toLowerCase().includes(keyword.toLowerCase());
     }
-    return content.body.toLowerCase().includes(keyword.toLowerCase());
   });
 };
