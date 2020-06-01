@@ -8,7 +8,7 @@ export const checkKeywords = (
 
   parameters.forEach(obj => {
     return obj.keywords.forEach(keyword => {
-      if (content.includes(keyword)) {
+      if (content.toLowerCase().includes(keyword.toLowerCase())) {
         matchingKeywords.push(obj);
       }
     })
