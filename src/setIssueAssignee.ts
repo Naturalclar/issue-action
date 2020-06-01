@@ -1,14 +1,18 @@
 import * as github from "@actions/github";
-import { getRepo, getIssueNumber } from "./github";
+import { getRepo, getIssueNumber, getPrNumber } from "./github";
 
 export const setIssueAssignee = async (token: string, assignees: string[]) => {
   const octokit = new github.GitHub(token);
 
-  const issue_number = getIssueNumber();
+    let issue_number;
 
-  if (issue_number == null) {
-    throw new Error("No Issue Provided");
-  }
+    if (getIssueNumber() !== undefined) {
+      issue_number = getIssueNumber();
+    } else if (getPrNumber() !== undefined) {
+      issue_number = getPrNumber();
+    } else {
+      throw new Error("No Issue Provided");
+    }
 
   await octokit.issues.addAssignees({
     ...getRepo(),
