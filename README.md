@@ -2,7 +2,7 @@
 
 # Issue Action
 
-Github action for automatically adding label or setting assignee when a new Issue is opened.
+Github action for automatically adding label or setting assignee when a new Issue or PR is opened.
 
 ## Usage
 
