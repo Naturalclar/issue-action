@@ -1,16 +1,12 @@
-name: "Issue Labeler"
-description: "trigger an action based on issue comment"
+name: "Issue Auto Labeling and Assigning"
+description: "trigger an action based on issue content"
 inputs:
   github-token:
     description: "Github token"
     required: true
-  keywords:
-    description: "keywords to look for in the issue"
+  parameters:
+    description: "JSON array of keywords to look for and labels and assignees to be set when there's a keyword match"
     required: true
-  assignees:
-    description: "assignees to be assigned when keyword is found"
-  labels:
-    description: "labels to be set when keyword is found"
   title-or-body:
     description: "Whether to check the issue title, the issue body, or both for matching keywords"
     required: false
