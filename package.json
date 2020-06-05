@@ -1,6 +1,6 @@
 {
   "name": "issue-action",
-  "version": "0.0.3",
+  "version": "2.0.0",
   "description": "Github action for github issues",
   "keywords": [
     "Actions",
@@ -14,10 +14,12 @@
   "repository": "https://github.com/Naturalclar/issue-action.git",
   "license": "MIT",
   "author": "Jesse Katsumata <jesse.katsumata@gmail.com>",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "prepackage": "yarn build",
+    "package": "ncc build"
   },
   "dependencies": {
     "@actions/core": "^1.2.4",
@@ -26,6 +28,7 @@
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/node": "^14.0.10",
+    "@zeit/ncc": "^0.22.3",
     "jest": "^25.2.7",
     "ts-jest": "^25.5.0",
     "typescript": "^3.9.5"
