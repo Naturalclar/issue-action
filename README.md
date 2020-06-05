@@ -2,19 +2,27 @@
 
 # Issue Action
 
-Github action for automatically adding label or setting assignee when a new Issue is opened.
+Github action for automatically adding label or setting assignee when a new Issue or PR is opened.
 
 ## Usage
 
-### Assignee
+#### Title or Body
 
-Automatically assign `@username` when Issue title or body contains `test`
+Choose whether you want to check for a keyword match in the issue `title`, the issue `body`, or `both`.
 
+#### Parameters
+
+Automatically set `BUG` label and assign `@username` when Issue contains `bug` or `error`.
+Automatically set `help-wanted` label and assign `@username` when Issue contains `help` or `guidance`.
+
+### Example
 ```yaml
-name: "Set Assignee"
+name: "Set Issue Label and Assignee"
 on:
   issues:
     types: [opened]
+  pull_requests:
+    typed: [opened]
 
 jobs:
   test:
@@ -22,29 +30,8 @@ jobs:
     steps:
       - uses: Naturalclar/issue-action@v1.0.0
         with:
-          keywords: '["test"]'
-          assignees: '["username"]'
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-```
-
-### Label
-
-Automatically set `help wanted` label when Issue title or body contains `help` or `wanted`
-
-```yaml
-name: "Set Issue Label"
-on:
-  issues:
-    types: [opened]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: Naturalclar/issue-action@v1.0.0
-        with:
-          keywords: '["help", "wanted"]'
-          labels: '["help wanted"]'
+          title-or-body: 'both'
+          parameters: '[ {"keywords": ["bug", "error"], "labels": ["BUG"], "assignees": ["username"]}, {"keywords": ["help", "guidance"], "labels": ["help-wanted"], "assignees": ["username"]}]'
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 ```
 

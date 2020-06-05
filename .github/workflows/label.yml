@@ -1,4 +1,4 @@
-name: "Test Issue Label"
+name: "Test Issue Auto Labeling and Assigning"
 on:
   issues:
     types: [opened]
@@ -12,6 +12,6 @@ jobs:
       - run: npm run build
       - uses: ./
         with:
-          keywords: '["label", "test"]'
-          labels: '["good first issue", "foo"]'
+          parameters: '[ {"keywords": ["label", "test"], "labels": ["good first issue", "foo"], "assignees": []}, {"keywords": ["assign", "test"], "labels": [], "assignees": ["Naturalclar"]}]'
+          title-or-body: 'both'
           github-token: "${{ secrets.GITHUB_TOKEN }}"
