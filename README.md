@@ -16,6 +16,7 @@ Automatically set `BUG` label and assign `@username` when Issue contains `bug` o
 Automatically set `help-wanted` label and assign `@username` when Issue contains `help` or `guidance`.
 
 ### Example
+
 ```yaml
 name: "Set Issue Label and Assignee"
 on:
@@ -30,14 +31,12 @@ jobs:
     steps:
       - uses: Naturalclar/issue-action@v1.0.0
         with:
-          title-or-body: 'both'
+          title-or-body: "both"
           parameters: '[ {"keywords": ["bug", "error"], "labels": ["BUG"], "assignees": ["username"]}, {"keywords": ["help", "guidance"], "labels": ["help-wanted"], "assignees": ["username"]}]'
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 ```
 
 # Upgrading this package
-
-When uploading github actions, `node_modules` and `lib` directories need to be commited.
 
 Follow the steps below:
 
@@ -46,15 +45,8 @@ Follow the steps below:
 $ git checkout -b release/vX.X.X
 ```
 
-Commentout the following lines in `.gitignore`
-
 ```
-# comment this out distribution branches
-node_modules/
-lib
-```
-
-```
+$ yarn package
 $ git add node_modules lib
 $ git commit -a -m "release"
 $ git push origin release/vX.X.X
