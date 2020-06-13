@@ -14,12 +14,10 @@
   "repository": "https://github.com/Naturalclar/issue-action.git",
   "license": "MIT",
   "author": "Jesse Katsumata <jesse.katsumata@gmail.com>",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "build": "tsc",
     "test": "jest",
-    "prepackage": "yarn build",
-    "package": "ncc build"
+    "build": "ncc build src/index.ts -o lib"
   },
   "dependencies": {
     "@actions/core": "^1.2.4",
