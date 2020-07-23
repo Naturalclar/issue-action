@@ -8,7 +8,7 @@ export const checkKeywords = (
 
   parameters.forEach(obj => {
     return obj.keywords.forEach(keyword => {
-      if (content.toLowerCase().includes(keyword.toLowerCase())) {
+      if (RegExp(`(?!-)\\b${keyword.toLowerCase()}\\b(?!-)`, 'g').test(content.toLowerCase())) {
         matchingKeywords.push(obj);
       }
     })
