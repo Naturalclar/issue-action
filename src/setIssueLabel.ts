@@ -47,6 +47,8 @@ export const setIssueLabel = async (token: string, matchingKeywords: Parameter[]
       ...getRepo(),
       issue_number,
       name: label
+    }).catch(err => {
+      // capture and ignore label not found error
     })
   }));
 };
