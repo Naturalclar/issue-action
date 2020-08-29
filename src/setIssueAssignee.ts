@@ -1,7 +1,8 @@
 import * as github from "@actions/github";
 import { getRepo, getIssueNumber, getPrNumber } from "./github";
+import { Parameter } from './types'
 
-export const setIssueAssignee = async (token: string,  matchingKeywords: { keywords: string[], labels: string[], assignees: string[] }[]) => {
+export const setIssueAssignee = async (token: string,  matchingKeywords: Parameter[]) => {
   const octokit = new github.GitHub(token);
 
   let issue_number;
@@ -17,11 +18,15 @@ export const setIssueAssignee = async (token: string,  matchingKeywords: { keywo
   let assignees: string[] = [];
 
   matchingKeywords.forEach(obj => {
+    if (!obj.assignees) {
+      return
+    }
+
     obj.assignees.forEach(label => {
       assignees.push(label);
     })
   })
-  
+
   await octokit.issues.addAssignees({
     ...getRepo(),
     issue_number,
