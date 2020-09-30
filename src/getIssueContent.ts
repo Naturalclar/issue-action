@@ -1,10 +1,7 @@
 import * as github from "@actions/github";
 import { getRepo, getIssueNumber, getPrNumber } from "./github";
 
-export const getIssueContent = async (
-  token: string,
-  titleOrBody: "title" | "body" | "both"
-) => {
+export const getIssueContent = async (token: string, titleOrBody: string) => {
   const octokit = new github.GitHub(token);
 
   let issue_number;
