@@ -27,7 +27,7 @@
     "@types/jest": "^25.2.1",
     "@types/node": "^14.0.10",
     "@vercel/ncc": "^0.24.1",
-    "jest": "^25.2.7",
+    "jest": "^25.5.4",
     "ts-jest": "^25.5.0",
     "typescript": "^3.9.5"
   }
