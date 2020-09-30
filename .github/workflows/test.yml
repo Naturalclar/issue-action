@@ -10,5 +10,3 @@ jobs:
       - run: npm run build
       - name: Run Test
         run: npm run test
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

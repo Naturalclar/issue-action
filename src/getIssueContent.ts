@@ -1,7 +1,10 @@
 import * as github from "@actions/github";
 import { getRepo, getIssueNumber, getPrNumber } from "./github";
 
-export const getIssueContent = async (token: string, titleOrBody) => {
+export const getIssueContent = async (
+  token: string,
+  titleOrBody: "title" | "body" | "both"
+) => {
   const octokit = new github.GitHub(token);
 
   let issue_number;
@@ -16,15 +19,14 @@ export const getIssueContent = async (token: string, titleOrBody) => {
 
   const { data } = await octokit.issues.get({
     ...getRepo(),
-    issue_number
+    issue_number,
   });
 
-  if (titleOrBody === 'title') {
+  if (titleOrBody === "title") {
     return data.title;
-  } else if (titleOrBody === 'body') {
+  } else if (titleOrBody === "body") {
     return data.body;
   } else {
-    return `${data.title} ${data.body}`
+    return `${data.title} ${data.body}`;
   }
-  
 };
