@@ -29,7 +29,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: Naturalclar/issue-action@v2.0.0
+      - uses: Naturalclar/issue-action@v2.0.2
         with:
           title-or-body: "both"
           parameters: '[ {"keywords": ["bug", "error"], "labels": ["BUG"], "assignees": ["username"]}, {"keywords": ["help", "guidance"], "labels": ["help-wanted"], "assignees": ["username"]}]'
@@ -46,8 +46,7 @@ $ git checkout -b release/vX.X.X
 ```
 
 ```
-$ yarn package
-$ git add node_modules lib
+$ yarn build
 $ git commit -a -m "release"
 $ git push origin release/vX.X.X
 ```
