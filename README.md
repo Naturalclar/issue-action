@@ -22,7 +22,7 @@ name: "Set Issue Label and Assignee"
 on:
   issues:
     types: [opened]
-  pull_requests:
+  pull_request:
     typed: [opened]
 
 jobs:
