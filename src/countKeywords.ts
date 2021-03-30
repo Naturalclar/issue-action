@@ -23,6 +23,8 @@ export const countKeywords = (
     })
   })
 
+  console.log(usedKeywords)
+
   // Determine which area has the most matches
   let winningArea = '';
   let max = 0;
