@@ -8,6 +8,7 @@ export const countKeywords = (
 
   // Count keywords in each area by looking at each word in content and counting it to an area if it is a keyword of that area
   issueWords.forEach(word => {
+    console.log(word)
     parameters.forEach(obj => {
       obj.keywords.forEach(keyword => {
           // TODO adjust (word === keyword) to be less picky (similar word library, regex, toLower)
@@ -19,7 +20,7 @@ export const countKeywords = (
   })
 
   // Determine which area has the most matches
-  let winningArea = '@aws-cdk/aws-apigateway';
+  let winningArea = '';
   let max = 0;
   for (let area of areaMap.entries()) {
     console.log(area)
