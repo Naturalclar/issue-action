@@ -25,7 +25,7 @@ export const countKeywords = (
         } else if(word === keyword) {
           usedKeywords.push(word)
           if(areaMap.has(obj.area)) {
-            let newValue = areaMap.get(obj.area)+1
+            newValue = areaMap.get(obj.area)+1
             areaMap.set(obj.area, newValue);
           } else {
             areaMap.set(obj.area, 1);
