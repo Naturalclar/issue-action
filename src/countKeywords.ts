@@ -5,6 +5,7 @@ export const countKeywords = (
 
   let issueWords: string[] = content.split(" ");
   let areaMap = new Map();
+  // Linearly lower value of each word starting at 1 and ending at .5
   let devalue: number = 1;
   let devalueModifier: number = .5/issueWords.length;
   let newValue: number;
@@ -25,15 +26,13 @@ export const countKeywords = (
       })
     })
     devalue -= devalueModifier;
-  })
-
-  console.log(devalueModifier, devalue)
+  });
 
   // Determine which area has the most matches
   let winningArea = '';
   let max = 0;
   for (let area of areaMap.entries()) {
-    console.log(area)
+    console.log(area);
     if (area[1] > max) {
       winningArea = area[0];
       max = area[1];
