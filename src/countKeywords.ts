@@ -14,9 +14,9 @@ export const countKeywords = (
       obj.keywords.forEach(keyword => {
         // TODO adjust (word === keyword) to be less picky (similar word library, regex, toLower, keyword in word)
         if(word === keyword && usedKeywords.includes(keyword)) {
-          areaMap.has(obj.area) ? areaMap[obj.area]+=DEVALUE : areaMap.set(obj.area, 1);
+          areaMap.has(obj.area) ? areaMap.set(obj.area, areaMap[obj.area]+DEVALUE) : areaMap.set(obj.area, 1);
         } else if(word === keyword) {
-          areaMap.has(obj.area) ? areaMap[obj.area]++ : areaMap.set(obj.area, 1);
+          areaMap.has(obj.area) ? areaMap.set(obj.area, areaMap[obj.area]++) : areaMap.set(obj.area, 1);
           usedKeywords.push(word);
         }
       })
