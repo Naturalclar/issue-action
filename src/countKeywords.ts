@@ -5,6 +5,7 @@ export const countKeywords = (
 
   let issueWords: string[] = content.split(" ");
   let areaMap = new Map();
+  // push used Keywords into array to devalue them if keyword shows up again
   let usedKeywords: string[] = [];
   const DEVALUE: number = .75;
   let newValue: number;
@@ -16,14 +17,16 @@ export const countKeywords = (
         // TODO adjust (word === keyword) to be less picky (similar word library, regex, toLower, keyword in word)
         if(word === keyword && usedKeywords.includes(keyword)) {
           if(areaMap.has(obj.area)) {
-            areaMap.set(obj.area, areaMap.get(obj.area)+.75);
+            newValue = areaMap.get(obj.area)+.75
+            areaMap.set(obj.area, newValue);
           } else {
               areaMap.set(obj.area, 1);
             }
         } else if(word === keyword) {
           usedKeywords.push(word)
           if(areaMap.has(obj.area)) {
-            areaMap.set(obj.area, areaMap.set(obj.area, areaMap.get(obj.area)+1));
+            let newValue = areaMap.get(obj.area)+1
+            areaMap.set(obj.area, newValue);
           } else {
             areaMap.set(obj.area, 1);
           }
@@ -31,8 +34,6 @@ export const countKeywords = (
       })
     })
   })
-
-  console.log(usedKeywords)
 
   // Determine which area has the most matches
   let winningArea = '';
