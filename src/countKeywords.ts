@@ -16,20 +16,14 @@ export const countKeywords = (
         // TODO adjust (word === keyword) to be less picky (similar word library, regex, toLower, keyword in word)
         if(word === keyword && usedKeywords.includes(keyword)) {
           if(areaMap.has(obj.area)) {
-            console.log(areaMap[obj.area])
-            console.log(typeof(areaMap[obj.area]))
-            newValue = areaMap.get(obj.area)+.75
-            areaMap.set(obj.area, newValue);
+            areaMap.set(obj.area, areaMap.get(obj.area)+.75);
           } else {
               areaMap.set(obj.area, 1);
             }
         } else if(word === keyword) {
           usedKeywords.push(word)
           if(areaMap.has(obj.area)) {
-            console.log(areaMap[obj.area])
-            console.log(typeof(areaMap[obj.area]))
-            let newValue = areaMap.get(obj.area)+1
-            areaMap.set(obj.area, newValue);
+            areaMap.set(obj.area, areaMap.set(obj.area, areaMap.get(obj.area)+1));
           } else {
             areaMap.set(obj.area, 1);
           }
