@@ -17,7 +17,7 @@ export const countKeywords = (
         // TODO adjust (word === keyword) to be less picky (similar word library, regex, toLower, keyword in word)
         if(word === keyword && usedKeywords.includes(keyword)) {
           if(areaMap.has(obj.area)) {
-            newValue = areaMap.get(obj.area)+.75
+            newValue = areaMap.get(obj.area)+DEVALUE
             areaMap.set(obj.area, newValue);
           } else {
               areaMap.set(obj.area, 1);
@@ -39,7 +39,6 @@ export const countKeywords = (
   let winningArea = '';
   let max = 0;
   for (let area of areaMap.entries()) {
-    console.log(area)
     if (area[1] > max) {
       winningArea = area[0];
       max = area[1];
