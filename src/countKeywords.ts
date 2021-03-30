@@ -31,6 +31,7 @@ export const countKeywords = (
   let winningArea = '';
   let max = 0;
   for (let area of areaMap.entries()) {
+    console.log(area)
     if (area[1] > max) {
       winningArea = area[0];
       max = area[1];
