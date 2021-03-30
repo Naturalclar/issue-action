@@ -18,8 +18,8 @@ export const countKeywords = (
           if(areaMap.has(obj.area)) {
             console.log(areaMap[obj.area])
             console.log(typeof(areaMap[obj.area]))
-            // newValue = parseInt(areaMap[obj.area])+.75
-            // areaMap.set(obj.area, newValue);
+            newValue = areaMap.get(obj.area)+.75
+            areaMap.set(obj.area, newValue);
           } else {
               areaMap.set(obj.area, 1);
             }
@@ -28,8 +28,8 @@ export const countKeywords = (
           if(areaMap.has(obj.area)) {
             console.log(areaMap[obj.area])
             console.log(typeof(areaMap[obj.area]))
-            // let newValue = parseInt(areaMap[obj.area])+1
-            // areaMap.set(obj.area, newValue);
+            let newValue = areaMap.get(obj.area)+1
+            areaMap.set(obj.area, newValue);
           } else {
             areaMap.set(obj.area, 1);
           }
