@@ -27,6 +27,8 @@ export const countKeywords = (
     devalue -= devalueModifier;
   })
 
+  console.log(devalueModifier)
+
   // Determine which area has the most matches
   let winningArea = '';
   let max = 0;
