@@ -1,7 +1,7 @@
 import * as github from "@actions/github";
 import { getRepo, getIssueNumber, getPrNumber } from "./github";
 
-export const setIssueLabel = async (token: string, matchingKeywords: { keywords: string[], labels: string[], assignees: string[] }[]) => {
+export const setIssueLabel = async (token: string,  winningArea: string, parameters: { area: string, keywords: string[], labels: string[], assignees: string[] }[]) => {
   const octokit = new github.GitHub(token);
 
   let issue_number;
@@ -16,10 +16,12 @@ export const setIssueLabel = async (token: string, matchingKeywords: { keywords:
 
   let labels: string[] = [];
 
-  matchingKeywords.forEach(obj => {
-    obj.labels.forEach(label => {
-      labels.push(label);
-    })
+  parameters.forEach(obj => {
+    if(winningArea == obj.area){
+      obj.labels.forEach(label => {
+        labels.push(label);
+      })
+    }
   })
 
   await octokit.issues.addLabels({
