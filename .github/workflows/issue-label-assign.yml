@@ -80,6 +80,8 @@ jobs:
             {"area":"@aws-cdk/aws-ec2","keywords":["(@aws-cdk/aws-ec2)","(aws-ec2)","(ec2)","(vpc)"],"labels":["@aws-cdk/aws-ec2"],"assignees":["rix0rrr"]},
             {"area":"@aws-cdk/aws-ecr","keywords":["(@aws-cdk/aws-ecr)","(aws-ecr)","(ecr)"],"labels":["@aws-cdk/aws-ecr"],"assignees":["MrArnoldPalmer"]},
             {"area":"@aws-cdk/aws-ecr-assets","keywords":["(@aws-cdk/aws-ecr-assets)","(aws-ecr-assets)","(ecr-assets)","(ecr assets)","(ecrassets)"],"labels":["@aws-cdk/aws-ecr-assets"],"assignees":["eladb"]},
+            {"area":"@aws-cdk/aws-ecs-patterns","keywords":["(@aws-cdk/aws-ecs)","(aws-ecs)","(ecs)"],"labels":["@aws-cdk/aws-ecs"],"assignees":["MrArnoldPalmer", "SoManyHs", "uttarasridhar"]},
+            {"area":"@aws-cdk/aws-ecs-patterns","keywords":["(@aws-cdk/aws-ecs-patterns)","(aws-ecs-patterns)","(ecs-patterns)","(ecs patterns)","(ecspatterns)"],"labels":["@aws-cdk/aws-ecs-patterns"],"assignees":["MrArnoldPalmer", "SoManyHs", "uttarasridhar"]},
             {"area":"@aws-cdk/aws-efs","keywords":["(@aws-cdk/aws-efs)","(aws-efs)","(efs)"],"labels":["@aws-cdk/aws-efs"],"assignees":["iliapolo"]},
             {"area":"@aws-cdk/aws-eks","keywords":["(@aws-cdk/aws-eks)","(aws-eks)","(eks)"],"labels":["@aws-cdk/aws-eks"],"assignees":["iliapolo"]},
             {"area":"@aws-cdk/aws-elasticache","keywords":["(@aws-cdk/aws-elasticache)","(aws-elasticache)","(elasticache)","(elastic cache)","(elastic-cache)"],"labels":["@aws-cdk/aws-elasticache"],"assignees":["iliapolo"]},
