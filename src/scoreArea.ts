@@ -1,3 +1,5 @@
+import { similarStrings } from './similarStrings'
+
 export const scoreArea = (
     content: string,
     parameters: { area: string, keywords: string[], labels: string[], assignees: string[] }[],
@@ -9,7 +11,7 @@ export const scoreArea = (
   parameters.forEach(obj => {
     obj.keywords.forEach(keyword => {
       // TODO adjust (word === keyword) to be less picky (similar word library, regex, toLower)
-      if(content === keyword) {
+      if(similarStrings(content, keyword)) {
         potentialAreas.has(obj.area) ?
           potentialAreas.set(obj.area, potentialAreas.get(obj.area)+devalue) :
           potentialAreas.set(obj.area, devalue);
