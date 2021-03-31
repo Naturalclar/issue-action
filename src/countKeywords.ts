@@ -6,7 +6,7 @@ export const countKeywords = (
 ): string => {
 
   let potentialAreas: Map<string, number> = new Map();
-  let issueWords = content.split("/ |\./");
+  let issueWords = content.split(/ |\./);
   console.log({issueWords})
   let devalue: number = 1, devalueCounter: number = 1;
 
