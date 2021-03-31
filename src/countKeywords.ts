@@ -7,6 +7,7 @@ export const countKeywords = (
 
   let potentialAreas: Map<string, number> = new Map();
   let issueWords = content.split("/ |\./");
+  console.log({issueWords})
   let devalue: number = 1, devalueCounter: number = 1;
 
   // Count keywords in each area by looking at each word in content and counting it to an area if it is a keyword of that area
