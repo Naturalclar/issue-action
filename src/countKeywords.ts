@@ -7,19 +7,20 @@ export const countKeywords = (
 
   let potentialAreas: Map<string, number> = new Map();
   let issueWords = content.split(/ |\./);
-  console.log({issueWords})
   let devalue: number = 1, devalueCounter: number = 1;
+  let detectedKeywords: string[] = [];
+  let returnObject: { potentialAreasMap: Map<string, number>, detectedKeywords: string[]} = { potentialAreasMap: new Map(), detectedKeywords: []}
 
   // Count keywords in each area by looking at each word in content and counting it to an area if it is a keyword of that area
   issueWords.forEach(content => {
-    potentialAreas = scoreArea(content, parameters, potentialAreas, devalue);
+    returnObject = scoreArea(content, parameters, potentialAreas, devalue, detectedKeywords);
     devalue = 1/++devalueCounter;
   })
 
   // Determine which area has the most matches
   let winningArea = '';
   let max = 0;
-  for (let area of potentialAreas.entries()) {
+  for (let area of returnObject.potentialAreasMap.entries()) {
     console.log(area)
     if (area[1] > max) {
       winningArea = area[0]
