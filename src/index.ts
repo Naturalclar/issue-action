@@ -21,12 +21,14 @@ async function run() {
       );
     }
 
+    console.log(excluded)
+
     excluded.forEach(ex => {
       content.replace(ex, '');
     });
 
     console.log(content)
-    
+
     const winningArea = countKeywords(parameters, content);
 
     if (winningArea === '') {
