@@ -13,7 +13,7 @@ export const countKeywords = (
 
   // Count keywords in each area by looking at each word in content and counting it to an area if it is a keyword of that area
   issueWords.forEach(content => {
-    returnObject = scoreArea(content, parameters, returnObject.potentialAreasMap, devalue, returnObject.detectedKeywords);
+    returnObject = scoreArea(content, parameters, returnObject, devalue);
     devalue = 1/++devalueCounter;
   })
 
