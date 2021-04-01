@@ -25,6 +25,8 @@ async function run() {
       content.replace(ex, '');
     });
 
+    console.log(content)
+    
     const winningArea = countKeywords(parameters, content);
 
     if (winningArea === '') {
