@@ -6,8 +6,11 @@ export const similarStrings = (str1: string, str2: string): boolean => {
     str1.replace('/ |_|-|(|)|	|\./gi', '');
     str2.replace('/ |_|-|(|)|	|\./gi', '');
   ​
-    if(levenshtein(str1, str2) <= (str1.length + str2.length / 2) * .125)
+    if(levenshtein(str1, str2) <= (str1.length + str2.length / 2) * .125) {
+      console.log(str1, str2)
       return true;
+    }
+      
     else
       return false;
 }

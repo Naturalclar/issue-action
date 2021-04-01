@@ -17,8 +17,6 @@ export const countKeywords = (
     devalue = 1/++devalueCounter;
   })
 
-  console.log(returnObject.detectedKeywords);
-
   // Determine which area has the most matches
   let winningArea = '';
   let max = 0;
