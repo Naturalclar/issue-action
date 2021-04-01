@@ -14,8 +14,8 @@ export const scoreArea = (
       if(similarStrings(content, keyword)) {
         returnObject.detectedKeywords.push(content)
         returnObject.potentialAreasMap.has(obj.area) ?
-        returnObject.potentialAreasMap.set(obj.area, returnObject.potentialAreasMap.get(obj.area)+devalue) :
-        returnObject.potentialAreasMap.set(obj.area, devalue);
+          returnObject.potentialAreasMap.set(obj.area, returnObject.potentialAreasMap.get(obj.area)+devalue) :
+          returnObject.potentialAreasMap.set(obj.area, devalue);
         return returnObject
       }    
     })
