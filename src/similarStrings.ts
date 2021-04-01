@@ -4,7 +4,7 @@ export const similarStrings = (str1: string, str2: string): boolean => {
     str1 = str1.toLowerCase();
     str2 = str2.toLowerCase();
     str1.replace('/ |_|-|(|)|:|	|\./gi', '');
-    str2.replace('/ |_|-|(|)|	|\./gi', '');
+    str2.replace(/ |_|-|	|\./gi, '');
 
     console.log(str1, str2)
   ​
