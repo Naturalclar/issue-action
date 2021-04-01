@@ -10,7 +10,7 @@ async function run() {
     core.setOutput("assigned", false.toString());
     const token = core.getInput("github-token");
     const content = await getIssueContent(token);
-    const excluded: string[] = core.getInput("excluded-expressions", {required: false}).replace(/[|]/gi, '').split('|');
+    const excluded: string[] = core.getInput("excluded-expressions", {required: false}).replace(/\[|\]/gi, '').split('|');
     const parameters: { area: string, keywords: string[], labels: string[], assignees: string[] }[] = JSON.parse(
       core.getInput("parameters", {required: true})
     );
