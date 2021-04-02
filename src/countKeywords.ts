@@ -32,14 +32,11 @@ export const countKeywords = (
   for (let area of returnObject.potentialAreasMap.entries()) {
     if(winners.size === 0) {
       winners.set(area[0], area[1]);
-      console.log("if size == 0 ", winners, area, winners.values().next().value)
     } else if (area[1] > winners.values().next().value) {
       winners = new Map();
       winners.set(area[0], area[1]);
-      console.log("else if > ", winners, area)
     } else if (area[1] === winners.values().next().value) {
       winners.set(area[0], area[1]);
-      console.log("else if === ", winners, area)
     }
   }
 
@@ -50,7 +47,8 @@ export const countKeywords = (
     winningArea = winners.keys().next().value;
   } 
 
-  winningArea = winners.keys().next().value;
+  console.log(winners)
+  console.log(returnObject.potentialAreasMap)
 
   return winningArea;
 }
