@@ -5,6 +5,7 @@ export const getIssueContent = async (token: string) => {
   const octokit = new github.GitHub(token);
 
   let issue_number;
+  let content: string[] = []
 
   if (getIssueNumber() !== undefined) {
     issue_number = getIssueNumber();
@@ -19,5 +20,6 @@ export const getIssueContent = async (token: string) => {
     issue_number,
   });
 
-  return `${data.title} ${data.body}`;
+  content.push(data.title, data.body)
+  return content;
 };

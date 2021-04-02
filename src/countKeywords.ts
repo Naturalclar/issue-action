@@ -2,17 +2,24 @@ import { scoreArea } from './scoreArea'
 
 export const countKeywords = (
   parameters: { area: string, keywords: string[], labels: string[], assignees: string[] }[],
-  content: string
+  titleContent: string,
+  bodyContent: string
 ): string => {
 
-  let issueWords = content.split(/ |\./);
+  let titleIssueWords = titleContent.split(/ |\./);
+  let bodyIssueWords = bodyContent.split(/ |\./)
   let devalue: number = 1, devalueCounter: number = 1;
   let detectedKeywords: string[] = [];
   let potentialAreas: Map<string, number> = new Map()
   let returnObject: { potentialAreasMap: Map<string, number>, detectedKeywords: string[]} = {potentialAreasMap: potentialAreas, detectedKeywords: detectedKeywords}
 
   // Count keywords in each area by looking at each word in content and counting it to an area if it is a keyword of that area
-  issueWords.forEach(content => {
+  titleIssueWords.forEach(content => {
+    returnObject = scoreArea(content, parameters, returnObject, devalue);
+    devalue = 1/++devalueCounter;
+  })
+
+  bodyIssueWords.forEach(content => {
     returnObject = scoreArea(content, parameters, returnObject, devalue);
     devalue = 1/++devalueCounter;
   })
