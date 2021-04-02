@@ -32,10 +32,10 @@ export const countKeywords = (
   for (let area of returnObject.potentialAreasMap.entries()) {
     if(winners.entries.length === 0) {
       winners.set(area[0], area[1]);
-    } else if (area[1] > winners[0][1]) {
+    } else if (area[1] > winners.entries[0][1]) {
       winners = new Map();
       winners.set(area[0], area[1]);
-    } else if (area[1] === winners[0][1]) {
+    } else if (area[1] === winners.entries[0][1]) {
       winners.set(area[0], area[1]);
     }
   }
