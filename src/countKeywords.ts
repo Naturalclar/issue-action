@@ -3,7 +3,8 @@ import { scoreArea } from './scoreArea'
 export const countKeywords = (
   parameters: { area: string, keywords: string[], labels: string[], assignees: string[] }[],
   titleContent: string,
-  bodyContent: string
+  bodyContent: string,
+  similar: number
 ): string => {
 
   let titleIssueWords = titleContent.split(/ |\./);
@@ -17,23 +18,32 @@ export const countKeywords = (
 
   // Count keywords in each area by looking at each word in content and counting it to an area if it is a keyword of that area
   titleIssueWords.forEach(content => {
-    returnObject = scoreArea(content, parameters, returnObject, titleValue);
+    returnObject = scoreArea(content, parameters, returnObject, titleValue, similar);
     titleValue = (2/(1+x))
   })
 
   bodyIssueWords.forEach(content => {
-    returnObject = scoreArea(content, parameters, returnObject, bodyValue);
+    returnObject = scoreArea(content, parameters, returnObject, bodyValue, similar);
   })
 
   // Determine which area has the most matches
   let winningArea = '';
-  let max = 0;
+  let winners: Map<string,number> = new Map();
   for (let area of returnObject.potentialAreasMap.entries()) {
-    console.log(area)
-    if (area[1] > max) {
-      winningArea = area[0]
-      max = area[1]
+    if(winners.entries.length === 0) {
+      winners.set(area[0], area[1]);
+    } else if (area[1] > winners[0][1]) {
+      winners = new Map();
+      winners.set(area[0], area[1]);
+    } else if (area[1] === winners[0][1]) {
+      winners.set(area[0], area[1]);
     }
+  }
+
+  if(winners.entries.length > 1 && similar !== 0) {
+    winningArea = countKeywords(parameters, titleContent, bodyContent, 0);
+  } else {
+    winningArea = winners.entries[0][0];
   }
 
   return winningArea;

@@ -11,6 +11,7 @@ async function run() {
     const token = core.getInput("github-token");
     const content: string[] = await getIssueContent(token);
     let titleContent = content[0], bodyContent = content[1]
+    const similarity = .125
     const excluded: string[] = core.getInput("excluded-expressions", {required: false}).replace(/\[|\]/gi, '').split('|');
     const parameters: { area: string, keywords: string[], labels: string[], assignees: string[] }[] = JSON.parse(
       core.getInput("parameters", {required: true})
@@ -29,7 +30,7 @@ async function run() {
       bodyContent.replace(ex, '')
     });
 
-    const winningArea = countKeywords(parameters, titleContent, bodyContent);
+    const winningArea = countKeywords(parameters, titleContent, bodyContent, similarity);
 
     if (winningArea === '') {
       console.log("Keywords not included in this issue");
