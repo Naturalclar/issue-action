@@ -26,6 +26,8 @@ export const countKeywords = (
     potentialAreas = scoreArea(content, parameters, potentialAreas, bodyValue, similarity);
   })
 
+  console.log(...potentialAreas)
+
   // Determine which area has the most matches
   let winningArea = '';
   let winners: Map<string,number> = new Map();
