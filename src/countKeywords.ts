@@ -43,7 +43,7 @@ export const countKeywords = (
   if(winners.size > 1 && similar !== 0) {
     winningArea = countKeywords(parameters, titleContent, bodyContent, 0);
   } else {
-    winningArea = winners.entries().next()[0];
+    //winningArea = winners.entries().next(;
   }
 
   return winningArea;
