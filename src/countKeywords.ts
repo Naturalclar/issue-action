@@ -30,7 +30,7 @@ export const countKeywords = (
   let winningArea = '';
   let winners: Map<string,number> = new Map();
   for (let area of returnObject.potentialAreasMap.entries()) {
-    if(winners.entries.length === 0) {
+    if(winners.size === 0) {
       winners.set(area[0], area[1]);
     } else if (area[1] > winners.entries[0][1]) {
       winners = new Map();
@@ -40,7 +40,7 @@ export const countKeywords = (
     }
   }
 
-  if(winners.entries.length > 1 && similar !== 0) {
+  if(winners.size > 1 && similar !== 0) {
     winningArea = countKeywords(parameters, titleContent, bodyContent, 0);
   } else {
     winningArea = winners.entries[0][0];
