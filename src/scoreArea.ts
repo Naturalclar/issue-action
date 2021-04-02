@@ -3,24 +3,22 @@ import { similarStrings } from './similarStrings'
 export const scoreArea = (
     content: string,
     parameters: { area: string, keywords: string[], labels: string[], assignees: string[] }[],
-    returnObject: { potentialAreasMap: Map<string, number>, detectedKeywords: string[]},
+    potentialAreas: Map<string, number>,
     devalue,
     similarity: number
-): { potentialAreasMap: Map<string, number>, detectedKeywords: string[]} => {
+): Map<string, number> => {
   
-  // Count keywords in each area by looking at each word in content and counting it to an area if it is a keyword of that area
+  // If content and keyword are 'similar', update area score if already exists, else set area and initial score
   parameters.forEach(obj => {
     obj.keywords.forEach(keyword => {
-      // TODO adjust (word === keyword) to be less picky (similar word library, regex, toLower)
       if(similarStrings(content, keyword, similarity)) {
-        returnObject.detectedKeywords.push(content)
-        returnObject.potentialAreasMap.has(obj.area) ?
-          returnObject.potentialAreasMap.set(obj.area, returnObject.potentialAreasMap.get(obj.area)+devalue) :
-          returnObject.potentialAreasMap.set(obj.area, devalue);
-        return returnObject
+        potentialAreas.has(obj.area) ?
+          potentialAreas.set(obj.area, potentialAreas.get(obj.area)+devalue) :
+          potentialAreas.set(obj.area, devalue);
+        return potentialAreas
       }    
     })
   })
 
-  return returnObject;
+  return potentialAreas;
 }

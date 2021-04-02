@@ -23,8 +23,6 @@ async function run() {
       );
     }
 
-    console.log(excluded)
-
     excluded.forEach(ex => {
       titleContent.replace(ex, '');
       bodyContent.replace(ex, '')

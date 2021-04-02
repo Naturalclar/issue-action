@@ -4,33 +4,32 @@ export const countKeywords = (
   parameters: { area: string, keywords: string[], labels: string[], assignees: string[] }[],
   titleContent: string,
   bodyContent: string,
-  similar: number
+  similarity: number
 ): string => {
 
   let titleIssueWords = titleContent.split(/ |\./);
   let bodyIssueWords = bodyContent.split(/ |\./)
   let titleValue: number = 1
   let x: number = 1;
-  let bodyValue: number = .025
-  let detectedKeywords: string[] = [];
+  let bodyValue: number = .05
   let potentialAreas: Map<string, number> = new Map()
-  let returnObject: { potentialAreasMap: Map<string, number>, detectedKeywords: string[]} = {potentialAreasMap: potentialAreas, detectedKeywords: detectedKeywords}
 
-  // Count keywords in each area by looking at each word in content and counting it to an area if it is a keyword of that area
+  // For each word in the title, check if it matches any keywords. If it does, add decreasing score based on inverse function to the area keyword is in.
   titleIssueWords.forEach(content => {
-    returnObject = scoreArea(content, parameters, returnObject, titleValue, similar);
+    potentialAreas = scoreArea(content, parameters, potentialAreas, titleValue, similarity);
     titleValue = (2/(1+x))
     x++
   })
 
+  // Add static value to area keyword is in if keyword is found in body
   bodyIssueWords.forEach(content => {
-    returnObject = scoreArea(content, parameters, returnObject, bodyValue, similar);
+    potentialAreas = scoreArea(content, parameters, potentialAreas, bodyValue, similarity);
   })
 
   // Determine which area has the most matches
   let winningArea = '';
   let winners: Map<string,number> = new Map();
-  for (let area of returnObject.potentialAreasMap.entries()) {
+  for (let area of potentialAreas.entries()) {
     if(winners.size === 0) {
       winners.set(area[0], area[1]);
     } else if (area[1] > winners.values().next().value) {
@@ -40,16 +39,14 @@ export const countKeywords = (
       winners.set(area[0], area[1]);
     }
   }
-
-  if(winners.size > 1 && similar !== 0) {
+  // tiebreaker goes to the area with more *exact* keyword matches
+  if(winners.size > 1 && similarity !== 0) {
     winningArea = countKeywords(parameters, titleContent, bodyContent, 0);
-    console.log()
   } else if (winners.size > 0) {
     winningArea = winners.keys().next().value;
   } 
 
-  console.log(winners)
-  console.log(returnObject.potentialAreasMap)
+  winningArea = winners.keys().next().value;
 
   return winningArea;
 }
