@@ -32,10 +32,10 @@ export const countKeywords = (
   for (let area of returnObject.potentialAreasMap.entries()) {
     if(winners.size === 0) {
       winners.set(area[0], area[1]);
-    } else if (area[1] > winners.entries[0][1]) {
+    } else if (area[1] > winners.entries().next().value) {
       winners = new Map();
       winners.set(area[0], area[1]);
-    } else if (area[1] === winners.entries[0][1]) {
+    } else if (area[1] === winners.entries().next().value) {
       winners.set(area[0], area[1]);
     }
   }
@@ -43,7 +43,7 @@ export const countKeywords = (
   if(winners.size > 1 && similar !== 0) {
     winningArea = countKeywords(parameters, titleContent, bodyContent, 0);
   } else {
-    winningArea = winners.entries[0][0];
+    winningArea = winners.entries().next()[0];
   }
 
   return winningArea;
