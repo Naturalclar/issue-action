@@ -20,6 +20,7 @@ export const countKeywords = (
   titleIssueWords.forEach(content => {
     returnObject = scoreArea(content, parameters, returnObject, titleValue, similar);
     titleValue = (2/(1+x))
+    x++
   })
 
   bodyIssueWords.forEach(content => {
