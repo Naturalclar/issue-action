@@ -7,10 +7,9 @@ inputs:
   parameters:
     description: "JSON array of keywords to look for and labels and assignees to be set when there's a keyword match"
     required: true
-  title-or-body:
-    description: "Whether to check the issue title, the issue body, or both for matching keywords"
-    required: false
-    default: "both"
+  excluded-expressions:
+    description: "Words to exclude from search"
+    required: true
 
 outputs:
   title:

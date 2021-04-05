@@ -1,6 +1,6 @@
 import * as core from "@actions/core";
 import { getIssueContent } from "./getIssueContent";
-import { checkKeywords } from "./checkKeywords";
+import { countKeywords } from "./countKeywords";
 import { setIssueLabel } from "./setIssueLabel";
 import { setIssueAssignee } from "./setIssueAssignee";
 
@@ -8,10 +8,12 @@ async function run() {
   try {
     core.setOutput("labeled", false.toString());
     core.setOutput("assigned", false.toString());
-    const titleOrBody: string = core.getInput("title-or-body");
     const token = core.getInput("github-token");
-    const content = await getIssueContent(token, titleOrBody);
-    const parameters: { keywords: string[], labels: string[], assignees: string[] }[] = JSON.parse(
+    const content: string[] = await getIssueContent(token);
+    let titleContent: string = content[0], bodyContent: string = content[1]
+    const similarity: number = .125
+    const excluded: string[] = core.getInput("excluded-expressions", {required: false}).replace(/\[|\]/gi, '').split('|');
+    const parameters: { area: string, keywords: string[], labels: string[], assignees: string[] }[] = JSON.parse(
       core.getInput("parameters", {required: true})
     );
     if (!parameters) {
@@ -21,16 +23,21 @@ async function run() {
       );
     }
 
-    const matchingKeywords = checkKeywords(parameters, content);
+    excluded.forEach(ex => {
+      titleContent.replace(ex, '');
+      bodyContent.replace(ex, '')
+    });
 
-    if (matchingKeywords === null) {
+    const winningArea = countKeywords(parameters, titleContent, bodyContent, similarity);
+
+    if (winningArea === '') {
       console.log("Keywords not included in this issue");
       return;
     } else {
-      setIssueLabel(token, matchingKeywords);
+      setIssueLabel(token, winningArea, parameters);
       core.setOutput("labeled", true.toString());
   
-      setIssueAssignee(token, matchingKeywords);
+      setIssueAssignee(token, winningArea, parameters);
       core.setOutput("assigned", true.toString());
     }
   } catch (error) {
