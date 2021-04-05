@@ -11,7 +11,7 @@ export const similarStrings = (str1: string, str2: string, similarity: number = 
     // levenshtein returns a value between 0 and the length of the strings being compared. This
     // represents the number of character differences between compared strings. We compare this
     // with a set percentage of the average length of said strings
-    if(levenshtein(str1, str2) <= Math.ceil(((str1.length + str2.length) / 2) * similarity))
+    if(levenshtein(str1, str2) <= ((str1.length + str2.length) / 2) * similarity)
       return true;
     else
       return false;
