@@ -3,6 +3,7 @@ import { getIssueContent } from "./getIssueContent";
 import { checkKeywords } from "./checkKeywords";
 import { setIssueLabel } from "./setIssueLabel";
 import { setIssueAssignee } from "./setIssueAssignee";
+import { Parameter } from "./types"
 
 async function run() {
   try {
@@ -11,7 +12,7 @@ async function run() {
     const titleOrBody: string = core.getInput("title-or-body");
     const token = core.getInput("github-token");
     const content = await getIssueContent(token, titleOrBody);
-    const parameters: { keywords: string[], labels: string[], assignees: string[] }[] = JSON.parse(
+    const parameters: Parameter[] = JSON.parse(
       core.getInput("parameters", {required: true})
     );
     if (!parameters) {
@@ -29,7 +30,7 @@ async function run() {
     } else {
       setIssueLabel(token, matchingKeywords);
       core.setOutput("labeled", true.toString());
-  
+
       setIssueAssignee(token, matchingKeywords);
       core.setOutput("assigned", true.toString());
     }
