@@ -166,7 +166,7 @@ jobs:
             {"area":"@aws-cdk/aws-ssm","keywords":["aws-ssm","ssm","systems-manager", "stringparameter", "stringlistparameter"],"labels":["@aws-cdk/aws-ssm"],"assignees":["MrArnoldPalmer"]},
             {"area":"@aws-cdk/aws-sso","keywords":["aws-sso","sso", "single-sign-on"],"labels":["@aws-cdk/aws-sso"],"assignees":["skinny85"]},
             {"area":"@aws-cdk/aws-stepfunctions","keywords":["aws-stepfunctions","stepfunctions","state machine", "chain"],"labels":["@aws-cdk/aws-stepfunctions"],"assignees":["shivlaks"]},
-            {"area":"@aws-cdk/aws-stepfunctions-tasks","keywords":["aws-stepfunctions-tasks","stepfunctions-tasks","labels":["@aws-cdk/aws-stepfunctions-tasks"],"assignees":["shivlaks"]},
+            {"area":"@aws-cdk/aws-stepfunctions-tasks","keywords":["aws-stepfunctions-tasks","stepfunctions-tasks"],"labels":["@aws-cdk/aws-stepfunctions-tasks"],"assignees":["shivlaks"]},
             {"area":"@aws-cdk/aws-synthetics","keywords":["aws-synthetics","synthetics", "canary"],"labels":["@aws-cdk/aws-synthetics"],"assignees":["NetaNir"]},
             {"area":"@aws-cdk/aws-timestream","keywords":["aws-timestream","timestream"],"labels":["@aws-cdk/aws-timestream"],"assignees":["skinny85"]},
             {"area":"@aws-cdk/aws-transfer","keywords":["aws-transfer","transfer", "cfnserver"],"labels":["@aws-cdk/aws-transfer"],"assignees":["iliapolo"]},
