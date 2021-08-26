@@ -137,7 +137,7 @@ jobs:
             {"area":"@aws-cdk/aws-pinpoint","keywords":["aws-pinpoint","pinpoint"],"labels":["@aws-cdk/aws-pinpoint"],"assignees":["iliapolo"]},
             {"area":"@aws-cdk/aws-pinpointemail","keywords":["aws-pinpointemail","pinpointemail"],"labels":["@aws-cdk/aws-pinpointemail"],"assignees":["iliapolo"]},
             {"area":"@aws-cdk/aws-qldb","keywords":["aws-qldb","qldb"],"labels":["@aws-cdk/aws-qldb"],"assignees":["skinny85"]},
-            {"area":"@aws-cdk/aws-ram","keywords":["aws-ram","ram", "resource-access-manager","labels":["@aws-cdk/aws-ram"],"assignees":["MrArnoldPalmer"]},
+            {"area":"@aws-cdk/aws-ram","keywords":["aws-ram","ram", "resource-access-manager"],"labels":["@aws-cdk/aws-ram"],"assignees":["MrArnoldPalmer"]},
             {"area":"@aws-cdk/aws-rds","keywords":["aws-rds","rds", "database-cluster","database-instance"],"labels":["@aws-cdk/aws-rds"],"assignees":["skinny85"]},
             {"area":"@aws-cdk/aws-redshift","keywords":["aws-redshift","redshift"],"labels":["@aws-cdk/aws-redshift"],"assignees":["njlynch"]},
             {"area":"@aws-cdk/aws-resourcegroups","keywords":["resourcegroups","aws-resourcegroups"],"labels":["@aws-cdk/aws-resourcegroups"],"assignees":["MrArnoldPalmer"]},
