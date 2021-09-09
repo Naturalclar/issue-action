@@ -1,43 +1,24 @@
 import * as core from "@actions/core";
-import { getIssueContent } from "./getIssueContent";
-import { countKeywords } from "./countKeywords";
-import { setIssueLabel } from "./setIssueLabel";
-import { setIssueAssignee } from "./setIssueAssignee";
+import { IParameter, Issue } from './issue';
+import { GithubApi } from './github';
 
 async function run() {
   try {
     core.setOutput("labeled", false.toString());
     core.setOutput("assigned", false.toString());
-    const token = core.getInput("github-token");
-    const content: string[] = await getIssueContent(token);
-    let titleContent: string = content[0], bodyContent: string = content[1]
-    const similarity: number = .125
-    const excluded: string[] = core.getInput("excluded-expressions", {required: false}).replace(/\[|\]/gi, '').split('|');
-    const parameters: { area: string, keywords: string[], labels: string[], assignees: string[] }[] = JSON.parse(
-      core.getInput("parameters", {required: true})
-    );
-    if (!parameters) {
-      core.setFailed(
-        `parameters input not found. Make sure your ".yml" file contains a "parameters" JSON array like this:
-        parameters: '[ {"keywords": ["bug", "error"], "labels": ["BUG"], "assignees": ["username"]}, {"keywords": ["help", "guidance"], "labels": ["help-wanted"], "assignees": ["username"]}]'`
-      );
-    }
 
-    excluded.forEach(ex => {
-      titleContent.replace(ex, '');
-      bodyContent.replace(ex, '')
-    });
+    const token = core.getInput('github-token');
+    const github: GithubApi = new GithubApi(token);
+    const content: string[] = await github.getIssueContent();
+    const issue: Issue = new Issue(content);
+    const winningAreaData: IParameter = issue.getWinningAreaData(issue.determineArea())
 
-    const winningArea = countKeywords(parameters, titleContent, bodyContent, similarity);
-
-    if (winningArea === '') {
+    if (winningAreaData.area === '') { 
       console.log("Keywords not included in this issue");
-      return;
     } else {
-      setIssueLabel(token, winningArea, parameters);
+      github.setIssueAssignees(winningAreaData.assignees);
+      github.setIssueLabels(winningAreaData.labels);
       core.setOutput("labeled", true.toString());
-  
-      setIssueAssignee(token, winningArea, parameters);
       core.setOutput("assigned", true.toString());
     }
   } catch (error) {

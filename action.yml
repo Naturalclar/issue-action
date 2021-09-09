@@ -10,6 +10,14 @@ inputs:
   excluded-expressions:
     description: "Words to exclude from search"
     required: true
+  similarity:
+    description: "Determines how similar two words can be for similarity to be detected"
+    required: false
+    default: ".125"
+  body-value:
+    description: "How much each keyword in issue body is weighted"
+    required: false
+    default: ".025"
 
 outputs:
   title:
