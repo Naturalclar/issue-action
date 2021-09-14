@@ -14,7 +14,7 @@ jobs:
       - uses: peterwoodworth/issue-action@main
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
-          excluded-expressions: "[ CDK CLI Version | TypeScript | Java | Python ]"
+          excluded-expressions: "[CDK CLI Version|TypeScript|Java|Python]"
           body-value: .1
           similarity: 0
           parameters: >
