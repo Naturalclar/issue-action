@@ -41,7 +41,7 @@ jobs:
            {"area":"@aws-cdk/aws-appstream","keywords":["aws-appstream","app-stream"],"labels":["@aws-cdk/aws-appstream"],"assignees":["madeline-k"]},
            {"area":"@aws-cdk/aws-appsync","keywords":["aws-appsync","app-sync","appsyncfunction","graphqlapi","dynamodbdatasource","lambdadatasource","nonedatasource","rdsdatasource","resolver"],"labels":["@aws-cdk/aws-appsync"],"assignees":["otaviomacedo"]},
            {"area":"@aws-cdk/aws-athena","keywords":["aws-athena","athena","cfndatacatalog","cfnnamedquery","cfnworkgroup"],"labels":["@aws-cdk/aws-athena"],"assignees":["BenChaimberg"]},
-           {"area":"@aws-cdk/aws-auditmanager",keywords":["(aws-auditmanager)","(auditmanager)"],"labels":["@aws-cdk/aws-auditmanager"],"assignees":["njlynch"]},
+           {"area":"@aws-cdk/aws-auditmanager","keywords":["(aws-auditmanager)","(auditmanager)"],"labels":["@aws-cdk/aws-auditmanager"],"assignees":["njlynch"]},
            {"area":"@aws-cdk/aws-autoscaling","keywords":["aws-autoscaling","auto-scaling","AutoScalingGroup","LifescycleHook","scheduledaction"],"labels":["@aws-cdk/aws-autoscaling"],"assignees":["comcalvi"]},
            {"area":"@aws-cdk/aws-autoscaling-api","keywords":["aws-autoscaling-api","autoscaling-api"],"labels":["@aws-cdk/aws-autoscaling-api"],"assignees":["comcalvi"]},
            {"area":"@aws-cdk/aws-autoscaling-common","keywords":["aws-autoscaling-common","autoscaling-common","arbitraryintervals","completescalinginterval","scalinginterval"],"labels":["@aws-cdk/aws-autoscaling-common"],"assignees":["comcalvi"]},
