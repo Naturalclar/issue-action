@@ -66,6 +66,7 @@ export class Issue {
     }
     // tiebreaker goes to the area with more *exact* keyword matches
     if(winners.size > 1 && this.similarity !== 0) {
+      this.similarity = 0;
       winningArea = this.determineArea();
     } else if (winners.size > 0) {
       winningArea = winners.keys().next().value;
