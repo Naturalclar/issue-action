@@ -9,48 +9,59 @@ export interface IParameter {
 }
 
 export class Issue {
-  private title: string;
-  private body: string;
+  private titleIssueWords?: string[];
+  private bodyIssueWords?: string[];
   public parameters: IParameter[];
   private similarity: number;
   private bodyValue: number;
 
   constructor(content: string[]) {
-    this.title = content[0];
-    this.body = content[1];
     const excluded: string[] = core.getInput("excluded-expressions", {required: false}).replace(/\[|\]/gi, '').split('|');
-    excluded.forEach(ex => {
-      this.title.replace(ex, '');
-      this.body.replace(ex, '');
-    });
+    const title = content[0];
+    const body = content[1];
+    if (title) {
+      excluded.forEach(ex => {
+        title.replace(ex, '');
+      });
+      this.titleIssueWords = title.split(/ |\./);
+    }
+    if (body) {
+      excluded.forEach(ex => {
+        body.replace(ex, '');
+      });
+      this.bodyIssueWords = title.split(/ |\./);
+    }
     this.parameters = JSON.parse(core.getInput("parameters", {required: true}));
     this.similarity = +core.getInput("similarity", {required: false});
     this.bodyValue = +core.getInput("body-value", {required: false});
   }
 
   public determineArea(): string {
-    let titleIssueWords = this.title.split(/ |\./);
-    let bodyIssueWords = this.body.split(/ |\./)
     let titleValue: number = 1;
     let x: number = 1;
     let potentialAreas: Map<string, number> = new Map();
+
     const weightedTitle: (n: number) => number = (n: number) => {
       return (2/(1+n));
     }
       
     // For each word in the title, check if it matches any keywords. If it does, add decreasing score based on inverse function to the area keyword is in.
-    titleIssueWords.forEach(content => {
-      potentialAreas = this.scoreArea(content, potentialAreas, titleValue);
-      ++x;
-      titleValue = weightedTitle(x);
-    });
+    if(this.titleIssueWords) {
+      this.titleIssueWords.forEach(content => {
+        potentialAreas = this.scoreArea(content, potentialAreas, titleValue);
+        ++x;
+        titleValue = weightedTitle(x);
+      });
+    }
       
     // Add static value to area keyword is in if keyword is found in body
-    bodyIssueWords.forEach(content => {
-      potentialAreas = this.scoreArea(content, potentialAreas, this.bodyValue);
-    });
+    if(this.bodyIssueWords) {
+      this.bodyIssueWords.forEach(content => {
+        potentialAreas = this.scoreArea(content, potentialAreas, this.bodyValue);
+      });
+    }
       
-    console.log(...potentialAreas);
+    console.log("Area scores: ", ...potentialAreas);
 
     let winningArea = '';
     let winners: Map<string,number> = new Map();
@@ -73,6 +84,8 @@ export class Issue {
     } 
       
     winningArea = winners.keys().next().value;
+
+    console.log("Winning area: " + winningArea);
       
     return winningArea;
   }
