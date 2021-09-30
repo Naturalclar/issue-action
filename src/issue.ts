@@ -29,7 +29,7 @@ export class Issue {
       excluded.forEach(ex => {
         body.replace(ex, '');
       });
-      this.bodyIssueWords = title.split(/ |\./);
+      this.bodyIssueWords = body.split(/ |\./);
     }
     this.parameters = JSON.parse(core.getInput("parameters", {required: true}));
     this.similarity = +core.getInput("similarity", {required: false});
