@@ -23,13 +23,14 @@ export class Issue {
       excluded.forEach(ex => {
         title.replace(ex, '');
       });
-      this.titleIssueWords = title.split(/ |\./);
+      this.titleIssueWords = title.split(/ |\(|\)|\./);
+      console.log(this.titleIssueWords);
     }
     if (body) {
       excluded.forEach(ex => {
         body.replace(ex, '');
       });
-      this.bodyIssueWords = body.split(/ |\./);
+      this.bodyIssueWords = body.split(/ |\(|\)|\./);
     }
     this.parameters = JSON.parse(core.getInput("parameters", {required: true}));
     this.similarity = +core.getInput("similarity", {required: false});
