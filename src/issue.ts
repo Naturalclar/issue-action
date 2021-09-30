@@ -24,7 +24,6 @@ export class Issue {
         title.replace(ex, '');
       });
       this.titleIssueWords = title.split(/ |\(|\)|\./);
-      console.log(this.titleIssueWords);
     }
     if (body) {
       excluded.forEach(ex => {
