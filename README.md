@@ -23,7 +23,7 @@ on:
   issues:
     types: [opened]
   pull_request:
-    typed: [opened]
+    types: [opened]
 
 jobs:
   test:
