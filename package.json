@@ -20,7 +20,7 @@
     "build": "ncc build src/index.ts -o lib"
   },
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.9.1",
     "@actions/github": "^2.2.0"
   },
   "devDependencies": {
