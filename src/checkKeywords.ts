@@ -1,10 +1,12 @@
+import { Parameter } from './types'
+
 export const checkKeywords = (
-  parameters: { keywords: string[], labels: string[], assignees: string[] }[],
+  parameters: Parameter[],
   content: string
-): { keywords: string[], labels: string[], assignees: string[] }[] | null => {
+): Parameter[] | null => {
   console.log('issue content:', content);
 
-  let matchingKeywords: { keywords: string[], labels: string[], assignees: string[] }[] = [];
+  let matchingKeywords: Parameter[] = [];
 
   parameters.forEach(obj => {
     return obj.keywords.forEach(keyword => {
@@ -13,11 +15,10 @@ export const checkKeywords = (
       }
     })
   })
-  
+
   if (matchingKeywords.length !== 0) {
     return matchingKeywords;
   } else {
     return null;
   }
-  
 };
