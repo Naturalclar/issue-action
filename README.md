@@ -19,11 +19,12 @@ Automatically set `help-wanted` label and assign `@username` when Issue contains
 
 ```yaml
 name: "Set Issue Label and Assignee"
-on:
-  issues:
-    types: [opened]
-  pull_request:
-    typed: [opened]
+    on:
+      issues:
+        types: [opened]
+      pull_request:
+        types: [opened]
+
 
 jobs:
   test:
